@@ -36,10 +36,10 @@ function electionResult(votes) {
     let banana = 0;
     for (let i = 0; i < votes.length; i++){
         let perVote = votes[i];
-        if (perVote.includes("mango")) {
+        if (perVote === "mango") {
             mango++;
         }
-        else if (perVote.includes("banan")) {
+        else if (perVote === "banana") {
             banana++;
         }
     }
@@ -60,7 +60,7 @@ function isBestFriend(f1, f2) {
     if (typeof f1 !== "object" || typeof f2 !== "object" || Array.isArray(f1) || Array.isArray(f2)) {
         return "Invalid"
     }
-    isFriend = false;
+    let isFriend = false;
     if (f1.bestFriend === f2.roll && f2.bestFriend === f1.roll) {
         isFriend = true;
     }
@@ -78,6 +78,7 @@ function calculateWatchTime(times) {
             return "Invalid";
         }
     }
+
     let totalSec = 0;
     for (const time of times) {
         totalSec += time;
@@ -85,6 +86,5 @@ function calculateWatchTime(times) {
     let hour = Math.floor(totalSec / 3600);
     let minute = Math.floor((totalSec % 3600) / 60);
     let seconds = Math.floor(totalSec % 60);
-
-    return `hour:${hour}, minute:${minute}, second:${seconds}`
+    return {hour: hour, minute: minute, second : seconds}
 }
